@@ -94,7 +94,7 @@ footer {
 
 .info ul, .agencies ul {
     list-style-type: none;
-    padding-left: 0;
+    padding-left: 20px; /* Indent the list items */
 }
 
 .info ul li, .agencies ul li {
@@ -108,7 +108,7 @@ footer {
 
 /* Nested lists within .info and .agencies */
 .info ul li ul, .agencies ul li ul {
-    margin-left: 20px;
+    margin-left: 20px; /* Indent the nested list items by one level */
     list-style-type: circle;
 }
 
@@ -129,10 +129,4 @@ footer {
     }
 
     section h2, section h3 {
-        font-size: 1.2rem;
-    }
-
-    .info h2, .agencies h2 {
-        font-size: 1.3rem;
-    }
-}
+        font-siz
