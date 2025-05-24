@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Your Complaint</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Submit a Complaint About Media Bias</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="complaint-form">
+            <h2>Complaint Form</h2>
+            <form action="submit-complaint" method="POST">
+                <label for="article-url">Article URL or Reference:</label>
+                <input type="text" id="article-url" name="article-url" placeholder="Paste the URL or reference here" required>
+
+                <label for="complaint-text">Complaint Explanation:</label>
+                <textarea id="complaint-text" name="complaint-text" placeholder="Explain why you believe this is biased" required></textarea>
+
+                <fieldset>
+                    <legend>Select Bias Categories:</legend>
+                    <label><input type="checkbox" name="bias[]" value="racism"> Racism</label><br>
+                    <label><input type="checkbox" name="bias[]" value="sexism"> Sexism / Misogyny</label><br>
+                    <label><input type="checkbox" name="bias[]" value="discrimination"> Discrimination</label><br>
+                    <label><input type="checkbox" name="bias[]" value="inaccuracy"> Inaccuracy</label><br>
+                    <label><input type="checkbox" name="bias[]" value="hate-speech"> Hate Speech</label><br>
+                    <label><input type="checkbox" name="bias[]" value="sensationalism"> Sensationalism</label><br>
+                    <label><input type="checkbox" name="bias[]" value="privacy"> Privacy Violations</label>
+                </fieldset>
+
+                <button type="submit">Submit Complaint</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Media Bias Complaint System - © 2025</p>
+    </footer>
+</body>
+</html>
