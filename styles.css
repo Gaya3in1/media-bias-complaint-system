@@ -31,51 +31,12 @@ main {
 
 h2, h3 {
     margin-bottom: 15px;
-    font-size: 1.5rem;
 }
 
 section {
     margin-bottom: 30px;
 }
 
-section h2 {
-    font-size: 1.75rem;
-    color: #0044cc;
-}
-
-/* Section styles */
-.info, .agencies {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.info ul, .agencies ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.info ul li, .agencies ul li {
-    margin-bottom: 15px;
-    font-size: 1rem;
-}
-
-.info ul li strong, .agencies ul li strong {
-    color: #0044cc;
-    font-weight: bold;
-}
-
-.info ul li ul, .agencies ul li ul {
-    margin-left: 20px;
-    list-style-type: circle;
-}
-
-.info ul li ul li {
-    font-size: 0.9rem;
-}
-
-/* Call to action buttons */
 .cta {
     background-color: #d3e1f2;
     padding: 20px;
@@ -90,20 +51,54 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
 }
 
 button:hover {
     background-color: #0033a1;
 }
 
-/* Footer */
 footer {
     text-align: center;
     margin-top: 40px;
     padding: 10px;
     background-color: #0044cc;
     color: white;
+}
+
+/* New section styles for .info and .agencies */
+.info, .agencies {
+    margin-top: 20px;
+}
+
+.info h2, .agencies h2 {
+    font-size: 1.5rem;
+    color: #0044cc;
+    margin-bottom: 15px;
+}
+
+.info ul, .agencies ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.info ul li, .agencies ul li {
+    margin-bottom: 10px;
+}
+
+.info ul li strong, .agencies ul li strong {
+    color: #0044cc;
+    font-weight: bold;
+}
+
+/* Nested lists within .info and .agencies */
+.info ul li ul, .agencies ul li ul {
+    margin-left: 20px;
+    list-style-type: circle;
+}
+
+.info ul li ul li, .agencies ul li ul li {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
 }
 
 /* Responsive Design */
@@ -119,13 +114,5 @@ footer {
 
     section h2, section h3 {
         font-size: 1.2rem;
-    }
-
-    .info, .agencies {
-        padding: 15px;
-    }
-
-    .info ul li, .agencies ul li {
-        font-size: 0.95rem;
     }
 }
