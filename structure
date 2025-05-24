@@ -1,0 +1,7 @@
+/media-bias-complaint-system
+├── index.html        (Homepage)
+├── complaint-form.html  (Complaint form)
+├── confirmation.html    (Confirmation page)
+├── styles.css         (CSS for styling)
+├── script.js          (Optional for future interactivity)
+└── README.md         (Describe your project)
