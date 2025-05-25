@@ -1,8 +1,7 @@
 <?php
-// PHP script to handle form data and interact with OpenAI API
-
+// process-complaint.php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Collect complaint data
+    // Collect the complaint text from the form submission
     $complaintText = $_POST['complaint-description'];
     
     // OpenAI API key (securely store this)
@@ -38,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $responseData = json_decode($response, true);
     $aiSuggestedText = $responseData['choices'][0]['text'];
     
-    // Send the AI-suggested text back to the front-end (review-form.html)
+    // Send the AI-suggested text back to the front-end
     echo json_encode(['ai_complaint' => $aiSuggestedText]);
 }
 ?>
