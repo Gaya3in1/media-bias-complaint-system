@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-    // ----- Part 1: Bias Selection and Organization Visibility -----
+    // Form 1: Complaint Form (bias selection and organization visibility)
     const biasCheckboxes = document.querySelectorAll('input[name="bias[]"]');
     const orgSelectionSection = document.getElementById('org-selection');
     const submitBtn = document.getElementById('submit-btn');
@@ -14,29 +13,30 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // ----- Part 2: Review Complaint and Modify -----
+    // Form 2: Submission and AI modification page
     const modifyComplaintText = document.getElementById('modify-complaint');
+    const modifyComplaintTextInput = document.getElementById('user-complaint');
+    const aiComplaintTextInput = document.getElementById('ai-complaint');
     const submitButton = document.querySelector('button[type="submit"]');
 
-    // Simulated data (this would come from your backend/API)
-    const userComplaint = '{{ user_complaint }}'; // Replace with the user's complaint text
-    const aiSuggestedText = '{{ ai_complaint }}'; // Replace with the AI-suggested complaint text
+    // Simulated data (replace with dynamic data from backend)
+    const userComplaint = '{{ user_complaint }}';  // Replace with user's complaint text from backend
+    const aiSuggestedText = '{{ ai_complaint }}'; // Replace with AI-suggested complaint text from backend
 
     // Pre-fill user complaint and AI suggested text
-    document.getElementById('user-complaint').value = userComplaint;
-    document.getElementById('ai-complaint').value = aiSuggestedText;
+    modifyComplaintTextInput.value = userComplaint;
+    aiComplaintTextInput.value = aiSuggestedText;
 
     // Modify complaint text if user edits the textarea
     modifyComplaintText.value = userComplaint;
 
-    // Submit button click handler
     submitButton.addEventListener('click', function (event) {
         event.preventDefault(); // Prevent form submission for now
 
+        // Collect the selected organizations
         const selectedOrganizations = [];
         const orgCheckboxes = document.querySelectorAll('input[name="organizations[]"]:checked');
         
-        // Collect selected organizations
         orgCheckboxes.forEach(function(checkbox) {
             selectedOrganizations.push(checkbox.value);
         });
@@ -44,17 +44,35 @@ document.addEventListener("DOMContentLoaded", function () {
         // Get the final complaint text (modified by the user or AI suggestion)
         const finalComplaintText = modifyComplaintText.value;
 
-        // Simulate sending this data to the backend (or process the complaint)
-        console.log({
-            finalComplaintText: finalComplaintText,
-            selectedOrganizations: selectedOrganizations
-        });
+        // Store the selected organizations and the final complaint text in sessionStorage
+        sessionStorage.setItem('finalComplaintText', finalComplaintText);
+        sessionStorage.setItem('selectedOrganizations', JSON.stringify(selectedOrganizations));
 
-        // Example: Show confirmation or handle the backend process
-        alert("Your complaint has been submitted!");
-
-        // Redirect user or handle submission here
-        window.location.href = 'confirmation.html'; // Redirect to a confirmation page
+        // Redirect to the confirmation page
+        window.location.href = 'confirmation.html'; // Redirect to the confirmation page
     });
 
+    // Confirmation Page: Display selected organizations from sessionStorage
+    if (window.location.href.includes('confirmation.html')) {
+        const selectedOrganizations = JSON.parse(sessionStorage.getItem('selectedOrganizations'));
+
+        const orgListElement = document.getElementById('organization-list');
+        
+        // Add organizations to the list on the confirmation page
+        if (selectedOrganizations && selectedOrganizations.length > 0) {
+            selectedOrganizations.forEach(function(org) {
+                const listItem = document.createElement('li');
+                listItem.textContent = org;
+                orgListElement.appendChild(listItem);
+            });
+        } else {
+            const noSelectionItem = document.createElement('li');
+            noSelectionItem.textContent = 'No organizations selected.';
+            orgListElement.appendChild(noSelectionItem);
+        }
+
+        // Optionally clear sessionStorage after displaying confirmation
+        sessionStorage.removeItem('finalComplaintText');
+        sessionStorage.removeItem('selectedOrganizations');
+    }
 });
