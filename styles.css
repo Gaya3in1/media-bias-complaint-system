@@ -37,6 +37,10 @@ section {
     margin-bottom: 30px;
 }
 
+section.main-break {
+    margin: 60px;
+}
+
 section.break {
     margin-bottom: 60px;
 }
@@ -50,8 +54,7 @@ section.break {
 
 ul.main-headding {
     list-style-type: none;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 20px;
 }
 
 ul.main-headding li ul {
