@@ -54,18 +54,18 @@ section {
     text-align: center;
 }
 
-ul.main-headding {
+ul.main-heading {
     list-style-type: none;
     padding-left: 20px;
     padding-top: 20px;
 }
 
-ul.main-headding li ul {
+ul.main-heading li ul {
     list-style-type: disc; /* Use bullet points for sub-lists */
     padding-left: 20px; /* Indent sub-lists */
 }
 
-ul.main-headding li ul li strong {
+ul.main-heading li ul li strong {
     color: #666; /* Dark grey color */
 }
 
