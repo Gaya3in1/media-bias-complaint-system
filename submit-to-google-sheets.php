@@ -1,5 +1,7 @@
 <?php
 // submit-to-google-sheets.php
+// This file handles submitting the form data (including complaint text 
+//and selected organizations) to Google Sheets via the Google Sheets API.
 
 require_once 'vendor/autoload.php';  // Google Client Library
 
