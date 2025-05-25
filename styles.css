@@ -52,8 +52,6 @@ ul.main-headding {
 ul.main-headding li {
     list-style-type: disc; /* Use bullet points for sub-lists */
     padding-left: 20px; /* Indent sub-lists */
-    display: inline;
-    margin-right: 20px;
 }
 
 ul li a {
