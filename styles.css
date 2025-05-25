@@ -59,7 +59,6 @@ ul.main-headding {
     padding-left: 20px;
     padding-top: 20px;
     margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 ul.main-headding li ul {
@@ -68,7 +67,7 @@ ul.main-headding li ul {
 }
 
 ul.main-headding li ul li strong {
-    color: #333; /* Dark grey color */
+    color: #666; /* Dark grey color */
 }
 
 ul li a {
