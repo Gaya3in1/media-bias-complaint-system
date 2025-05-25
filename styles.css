@@ -60,8 +60,8 @@ ul.main-heading {
     padding-top: 20px;
 }
 
-ul.main-heading li {
-    margin-bottom: 20px; /* Adds space between each main list item */
+ul.main-heading > li {
+    margin-bottom: 20px; /* Adds space between each main list item only */
 }
 
 ul.main-heading li ul {
