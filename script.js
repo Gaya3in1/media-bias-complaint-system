@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Form 1: Complaint Form (bias selection and organization visibility)
     const biasCheckboxes = document.querySelectorAll('input[name="bias[]"]');
     const orgSelectionSection = document.getElementById('org-selection');
-    const submitBtn = document.getElementById('submit-btn');
+    const submitButton = document.querySelector('button[type="submit"]');
+    const userComplaint = document.getElementById('user-complaint');
+    const aiComplaint = document.getElementById('ai-complaint');
 
     // Toggle organizations visibility based on selected biases
     biasCheckboxes.forEach(checkbox => {
@@ -13,27 +14,32 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Form 2: Submission and AI modification page
-    const modifyComplaintText = document.getElementById('modify-complaint');
-    const modifyComplaintTextInput = document.getElementById('user-complaint');
-    const aiComplaintTextInput = document.getElementById('ai-complaint');
-    const submitButton = document.querySelector('button[type="submit"]');
-
-    // Simulated data (replace with dynamic data from backend)
-    const userComplaint = '{{ user_complaint }}';  // Replace with user's complaint text from backend
-    const aiSuggestedText = '{{ ai_complaint }}'; // Replace with AI-suggested complaint text from backend
-
-    // Pre-fill user complaint and AI suggested text
-    modifyComplaintTextInput.value = userComplaint;
-    aiComplaintTextInput.value = aiSuggestedText;
-
-    // Modify complaint text if user edits the textarea
-    modifyComplaintText.value = userComplaint;
-
+    // AI refinement logic
     submitButton.addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent form submission for now
+        event.preventDefault();
 
-        // Collect the selected organizations
+        // Send complaint to backend for AI refinement
+        fetch('process-complaint.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `complaint-description=${encodeURIComponent(userComplaint.value)}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            aiComplaint.value = data.ai_complaint;
+        })
+        .catch(error => {
+            console.error('Error fetching AI suggestion:', error);
+        });
+    });
+
+    // Handle form submission and data processing
+    submitButton.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        // Collect selected organizations
         const selectedOrganizations = [];
         const orgCheckboxes = document.querySelectorAll('input[name="organizations[]"]:checked');
         
@@ -42,37 +48,30 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         // Get the final complaint text (modified by the user or AI suggestion)
-        const finalComplaintText = modifyComplaintText.value;
+        const finalComplaintText = aiComplaint.value || userComplaint.value;
 
-        // Store the selected organizations and the final complaint text in sessionStorage
-        sessionStorage.setItem('finalComplaintText', finalComplaintText);
-        sessionStorage.setItem('selectedOrganizations', JSON.stringify(selectedOrganizations));
+        // Simulate sending this data to the backend (or process the complaint)
+        console.log({
+            finalComplaintText: finalComplaintText,
+            selectedOrganizations: selectedOrganizations
+        });
 
-        // Redirect to the confirmation page
-        window.location.href = 'confirmation.html'; // Redirect to the confirmation page
+        // Send complaint data to Google Sheets or another backend system
+        fetch('submit-to-google-sheets.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `complaint-text=${encodeURIComponent(finalComplaintText)}&organizations=${encodeURIComponent(selectedOrganizations.join(', '))}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Complaint stored successfully", data);
+            // Redirect to confirmation page after submission
+            window.location.href = 'confirmation.html'; // Redirect to confirmation page
+        })
+        .catch(error => {
+            console.error('Error submitting to Google Sheets:', error);
+        });
     });
-
-    // Confirmation Page: Display selected organizations from sessionStorage
-    if (window.location.href.includes('confirmation.html')) {
-        const selectedOrganizations = JSON.parse(sessionStorage.getItem('selectedOrganizations'));
-
-        const orgListElement = document.getElementById('organization-list');
-        
-        // Add organizations to the list on the confirmation page
-        if (selectedOrganizations && selectedOrganizations.length > 0) {
-            selectedOrganizations.forEach(function(org) {
-                const listItem = document.createElement('li');
-                listItem.textContent = org;
-                orgListElement.appendChild(listItem);
-            });
-        } else {
-            const noSelectionItem = document.createElement('li');
-            noSelectionItem.textContent = 'No organizations selected.';
-            orgListElement.appendChild(noSelectionItem);
-        }
-
-        // Optionally clear sessionStorage after displaying confirmation
-        sessionStorage.removeItem('finalComplaintText');
-        sessionStorage.removeItem('selectedOrganizations');
-    }
 });
