@@ -52,7 +52,8 @@
                         <label><input type="checkbox" name="racism-subcategories[]" value="dehumanizing-language"> Dehumanizing Language</label><br>
                         <label><input type="checkbox" name="racism-subcategories[]" value="racial-profiling"> Racial Profiling</label><br>
                         <label><input type="checkbox" name="racism-subcategories[]" value="exoticizing"> Exoticizing or Othering</label><br>
-                        <label><input type="checkbox" name="racism-subcategories[]" value="erasure"> Erasure</label>
+                        <label><input type="checkbox" name="racism-subcategories[]" value="erasure"> Erasure</label><br>
+                        <label><input type="checkbox" name="racism-subcategories[]" value="lacks-context"> Lack of Proper Context</label>
                     </div>
 
                     <label><input type="checkbox" name="bias[]" value="sexism"> Sexism / Misogyny</label>
@@ -62,12 +63,28 @@
                         <label><input type="checkbox" name="sexism-subcategories[]" value="toxic-masculinity"> Toxic Masculinity</label><br>
                         <label><input type="checkbox" name="sexism-subcategories[]" value="underrepresentation"> Underrepresentation</label><br>
                         <label><input type="checkbox" name="sexism-subcategories[]" value="stereotyping"> Stereotyping</label><br>
-                        <label><input type="checkbox" name="sexism-subcategories[]" value="paternalism"> Paternalism</label>
+                        <label><input type="checkbox" name="sexism-subcategories[]" value="paternalism"> Paternalism</label><br>
+                        <label><input type="checkbox" name="sexism-subcategories[]" value="lacks-context"> Lack of Proper Context</label>
+                    </div>
+
+                    <label><input type="checkbox" name="bias[]" value="hate"> Hate Speech</label>
+                    <div class="sub-category">
+                        <label><input type="checkbox" name="hate-subcategories[]" value="incite"> Incitement to Violence or Hatred</label><br>
+                        <label><input type="checkbox" name="hate-subcategories[]" value="defamation"> Defamation</label>
+                    </div>
+
+                    <label><input type="checkbox" name="bias[]" value="sensationalism"> Sensationalism</label>
+                    <div class="sub-category">
+                        <label><input type="checkbox" name="sensationalism-subcategories[]" value="exaggeration"> Exaggeration of Facts</label><br>
+                        <label><input type="checkbox" name="sensationalism-subcategories[]" value="clickbait"> Clickbait</label>
                     </div>
                     <!-- Add other bias categories here if needed -->
                 </div>
+            </fieldset>
 
-                <label for="supporting-evidence">Supporting Evidence (Optional)</label>
+            <fieldset>
+                <legend>Section 4: Supporting Evidence (Optional)</legend>
+                <label for="supporting-evidence">Upload any images or documents that may be relavent</label>
                 <input type="file" id="supporting-evidence" name="supporting-evidence">
             </fieldset>
 
