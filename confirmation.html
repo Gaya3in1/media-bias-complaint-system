@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complaint Submitted</title>
+    <title>Complaint Submitted - Confirmation</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Complaint Submission Successful</h1>
+        <h1>Complaint Submission Confirmation</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -18,24 +18,32 @@
 
     <main>
         <section id="confirmation">
-            <h2>Thank you for your submission!</h2>
-            <p>Your complaint has been successfully submitted. The following organizations will be receiving your complaint:</p>
+            <h2>Thank You for Your Submission!</h2>
+            <p>Your complaint has been successfully submitted. Here are the details:</p>
+            
+            <!-- Display Final Complaint Text -->
+            <div>
+                <h3>Your Complaint Text:</h3>
+                <textarea id="final-complaint-text" rows="10" cols="50" readonly></textarea>
+            </div>
 
-            <ul>
-                <li>IPSO</li>
-                <li>Ofcom</li>
-                <li>The Equality and Human Rights Commission</li>
-                <li>Broadcasting Standards Commission</li>
-            </ul>
+            <!-- Display the Selected Organizations -->
+            <div>
+                <h3>Selected Organizations:</h3>
+                <ul id="organization-list">
+                    <!-- Organizations will be dynamically inserted here -->
+                </ul>
+            </div>
 
-            <p>You will be contacted if further information is required. Thank you for helping us make media coverage more fair and balanced!</p>
-
-            <button onclick="window.location.href='index.html'">Back to Home</button>
+            <p>If you would like to make any changes, please contact us directly. Your complaint will be reviewed by the selected organizations.</p>
         </section>
     </main>
 
     <footer>
         <p>Media Bias Complaint System - © 2025</p>
     </footer>
+
+    <!-- Link to the script -->
+    <script src="script.js"></script>
 </body>
 </html>
