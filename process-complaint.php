@@ -1,5 +1,8 @@
 <?php
-// process-complaint.php
+// process-complaint.php 
+//This file will handle the backend logic for processing the complaint text, 
+//likely involving AI refinement (via API) and possibly further handling.
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Collect the complaint text from the form submission
     $complaintText = $_POST['complaint-description'];
