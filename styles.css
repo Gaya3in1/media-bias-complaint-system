@@ -44,12 +44,14 @@ section {
     text-align: center;
 }
 
-ul {
+ul.main-headding {
     list-style-type: none;
     padding: 10px;
 }
 
-ul li {
+ul.main-headding li {
+    list-style-type: disc; /* Use bullet points for sub-lists */
+    padding-left: 20px; /* Indent sub-lists */
     display: inline;
     margin-right: 20px;
 }
