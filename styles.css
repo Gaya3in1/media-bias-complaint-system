@@ -37,6 +37,10 @@ section {
     margin-bottom: 30px;
 }
 
+section.break {
+    margin-bottom: 60px;
+}
+
 .cta {
     background-color: #d3e1f2;
     padding: 20px;
@@ -47,6 +51,7 @@ section {
 ul.main-headding {
     list-style-type: none;
     padding: 10px;
+    margin-bottom: 10px;
 }
 
 ul.main-headding li ul {
