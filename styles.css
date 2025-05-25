@@ -58,16 +58,17 @@ ul.main-headding {
     list-style-type: none;
     padding-left: 20px;
     padding-top: 20px;
+    margin-top: 20px;
     margin-bottom: 20px;
-}
-
-ul.main-headding li strong {
-    color: #333; /* Dark grey color */
 }
 
 ul.main-headding li ul {
     list-style-type: disc; /* Use bullet points for sub-lists */
     padding-left: 20px; /* Indent sub-lists */
+}
+
+ul.main-headding li ul li strong {
+    color: #333; /* Dark grey color */
 }
 
 ul li a {
