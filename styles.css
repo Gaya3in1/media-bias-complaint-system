@@ -99,76 +99,58 @@ footer {
     color: white;
 }
 
-/* Form */
-form {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
+/* Form Styling */
 form fieldset {
     border: none;
+    padding: 20px;
     margin-bottom: 20px;
 }
 
 form legend {
-    font-size: 1.2rem;
     font-weight: bold;
+    font-size: 1.3em;
+    margin-bottom: 10px;
 }
 
 form label {
     display: block;
-    margin-bottom: 5px;
-    font-size: 1rem;
-}
-
-form label span.required {
     font-weight: bold;
-    color: red;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
-form input[type="text"],
-form input[type="email"],
-form input[type="url"],
-form textarea,
-form input[type="file"] {
+form input, form textarea {
     width: 100%;
     padding: 10px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-bottom: 10px;
-    font-size: 1rem;
-}
-
-form input[type="text"]:focus,
-form input[type="email"]:focus,
-form input[type="url"]:focus,
-form textarea:focus,
-form input[type="file"]:focus {
-    border-color: #0044cc;
-    outline: none;
 }
 
 form textarea {
-    resize: vertical;
-    min-height: 150px;
+    height: 150px; /* Larger height for the complaint description and comments */
 }
 
 form .checkbox-group label {
-    font-size: 1rem;
+    display: block;
+    margin-top: 5px;
     margin-bottom: 5px;
-    display: inline-block;
-}
-
-form .checkbox-group input {
-    margin-right: 10px;
 }
 
 form .sub-category {
-    padding-left: 20px;
+    margin-left: 20px;
 }
 
+form .required {
+    color: red;
+}
+
+/* Optional file upload styling */
+form input[type="file"] {
+    margin-top: 10px;
+}
+
+/* Button Styling */
 form button {
     padding: 10px 20px;
     background-color: #0044cc;
@@ -176,11 +158,25 @@ form button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
     width: 100%;
+    font-size: 1.1em;
     margin-top: 20px;
 }
 
 form button:hover {
     background-color: #0033a1;
+}
+
+/* Intro Section Styling */
+#intro {
+    margin-bottom: 30px;
+}
+
+#intro ul {
+    list-style-type: none;
+    margin-left: 20px;
+}
+
+#intro ul li {
+    margin-bottom: 10px;
 }
