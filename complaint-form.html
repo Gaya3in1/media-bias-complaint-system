@@ -45,8 +45,8 @@
 
                 <label for="bias-categories">Select Bias Categories</label>
                 <div class="checkbox-group">
-                    <label><input type="checkbox" name="bias[]" value="racism"> Racism</label>
-                    <div class="sub-category">
+                    <label><input type="checkbox" name="bias[]" value="racism" id="bias-racism"> Racism</label>
+                    <div class="sub-category" id="racism-subcategories">
                         <label><input type="checkbox" name="racism-subcategories[]" value="stereotyping"> Stereotyping</label><br>
                         <label><input type="checkbox" name="racism-subcategories[]" value="implicit-bias"> Implicit Bias</label><br>
                         <label><input type="checkbox" name="racism-subcategories[]" value="dehumanizing-language"> Dehumanizing Language</label><br>
@@ -56,8 +56,8 @@
                         <label><input type="checkbox" name="racism-subcategories[]" value="lacks-context"> Lack of Proper Context</label>
                     </div>
 
-                    <label><input type="checkbox" name="bias[]" value="sexism"> Sexism / Misogyny</label>
-                    <div class="sub-category">
+                    <label><input type="checkbox" name="bias[]" value="sexism" id="bias-sexism"> Sexism / Misogyny</label>
+                    <div class="sub-category" id="sexism-subcategories">
                         <label><input type="checkbox" name="sexism-subcategories[]" value="objectification"> Objectification</label><br>
                         <label><input type="checkbox" name="sexism-subcategories[]" value="patriarchal-language"> Patriarchal Language</label><br>
                         <label><input type="checkbox" name="sexism-subcategories[]" value="toxic-masculinity"> Toxic Masculinity</label><br>
@@ -67,14 +67,14 @@
                         <label><input type="checkbox" name="sexism-subcategories[]" value="lacks-context"> Lack of Proper Context</label>
                     </div>
 
-                    <label><input type="checkbox" name="bias[]" value="hate"> Hate Speech</label>
-                    <div class="sub-category">
+                    <label><input type="checkbox" name="bias[]" value="hate" id="bias-hate"> Hate Speech</label>
+                    <div class="sub-category" id="hate-subcategories">
                         <label><input type="checkbox" name="hate-subcategories[]" value="incite"> Incitement to Violence or Hatred</label><br>
                         <label><input type="checkbox" name="hate-subcategories[]" value="defamation"> Defamation</label>
                     </div>
 
-                    <label><input type="checkbox" name="bias[]" value="sensationalism"> Sensationalism</label>
-                    <div class="sub-category">
+                    <label><input type="checkbox" name="bias[]" value="sensationalism" id="bias-sensationalism"> Sensationalism</label>
+                    <div class="sub-category" id="sensationalism-subcategories">
                         <label><input type="checkbox" name="sensationalism-subcategories[]" value="exaggeration"> Exaggeration of Facts</label><br>
                         <label><input type="checkbox" name="sensationalism-subcategories[]" value="clickbait"> Clickbait</label>
                     </div>
@@ -93,7 +93,7 @@
 
             <fieldset>
                 <legend>Section 4: Supporting Evidence (Optional)</legend>
-                <label for="supporting-evidence">Upload any images or documents that may be relavent</label>
+                <label for="supporting-evidence">Upload any images or documents that may be relevant</label>
                 <input type="file" id="supporting-evidence" name="supporting-evidence">
             </fieldset>
 
@@ -103,7 +103,7 @@
                 <textarea id="additional-info" name="additional-info"></textarea>
             </fieldset>
 
-            <button type="submit">Proceed to AI review</button>
+            <button type="submit" id="submit-btn" style="display: none;">Proceed to AI Review</button>
         </form>
     </main>
 
@@ -112,6 +112,5 @@
     </footer>
 
     <script src="script.js"></script>
-    
 </body>
 </html>
