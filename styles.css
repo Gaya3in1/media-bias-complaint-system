@@ -57,15 +57,13 @@ section {
 ul.main-headding {
     list-style-type: none;
     padding-left: 20px;
-}
-
-ul.main-headding li {
     margin-bottom: 20px;
 }
 
 ul.main-headding li ul {
     list-style-type: disc; /* Use bullet points for sub-lists */
     padding-left: 20px; /* Indent sub-lists */
+    margin-bottom: 0px;
 }
 
 ul li a {
