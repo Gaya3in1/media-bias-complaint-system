@@ -56,8 +56,11 @@ section {
 
 ul.main-headding {
     list-style-type: none;
-    padding-top: 20px;
     padding-left: 20px;
+}
+
+ul.main-headding li {
+    margin-bottom: 20px;
 }
 
 ul.main-headding li ul {
