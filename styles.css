@@ -37,8 +37,14 @@ section {
     margin-bottom: 30px;
 }
 
-section.break {
-    margin-top: 60px;
+.break {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.info {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .cta {
