@@ -38,7 +38,8 @@ section {
 }
 
 section.main-break {
-    margin: 60px;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 section.break {
