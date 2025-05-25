@@ -60,6 +60,10 @@ ul.main-heading {
     padding-top: 20px;
 }
 
+ul.main-heading li {
+    margin-bottom: 20px; /* Adds space between each main list item */
+}
+
 ul.main-heading li ul {
     list-style-type: disc; /* Use bullet points for sub-lists */
     padding-left: 20px; /* Indent sub-lists */
