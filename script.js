@@ -1,3 +1,12 @@
+// The JavaScript file that handles client-side logic for:
+// 1.Registers the Bias check box selected to display the relavant organisations
+// 2.Refine the user's complaint text using AI  
+// 3. Collect all the information needed to submit the complaint
+// 4. After the user reviews the complaint, submit the complaint data to a Google Sheet
+// 5. After submission, redirect the user to a confirmation page
+
+sending data, and handling form submissions.
+
 document.addEventListener("DOMContentLoaded", function () {
     const biasCheckboxes = document.querySelectorAll('input[name="bias[]"]');
     const orgSelectionSection = document.getElementById('org-selection');
