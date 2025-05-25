@@ -19,13 +19,13 @@
         <section id="intro">
             <h2>Complaint Details</h2>
             <p>Please explain exactly why the media coverage or headline is discriminatory or biased. Provide evidence or examples (such as quotes from the article, screenshots, etc.) and describe how it harms or misrepresents individuals or communities.</p>
-            <ul>
+            <ul class="main-heading">
                 <li><strong>Be specific:</strong> Point out exactly which part of the content you find problematic.</li>
                 <li><strong>Offer alternatives:</strong> If possible, suggest how the coverage could have been done in a fairer, more respectful manner.</li>
             </ul>
         </section>
 
-        <form action="submit-complaint.php" method="POST" enctype="multipart/form-data">
+        <form action="process-complaint.php" method="POST" enctype="multipart/form-data">
             <fieldset>
                 <legend>Section 1: Personal Information</legend>
                 <label for="full-name">Full Name <span class="required">*</span></label>
@@ -82,6 +82,15 @@
                 </div>
             </fieldset>
 
+            <fieldset id="org-selection" style="display: none;">
+                <legend>Section 3: Select Organizations to Submit Your Complaint</legend>
+                <label><input type="checkbox" name="organizations[]" value="human-rights-commission"> Human Rights Commission</label><br>
+                <label><input type="checkbox" name="organizations[]" value="media-watchdog"> Media Watchdog</label><br>
+                <label><input type="checkbox" name="organizations[]" value="gender-equality"> Gender Equality Organization</label><br>
+                <label><input type="checkbox" name="organizations[]" value="hate-speech-agency"> Hate Speech Agency</label><br>
+                <!-- Add other relevant organizations here based on categories selected -->
+            </fieldset>
+
             <fieldset>
                 <legend>Section 4: Supporting Evidence (Optional)</legend>
                 <label for="supporting-evidence">Upload any images or documents that may be relavent</label>
@@ -94,12 +103,15 @@
                 <textarea id="additional-info" name="additional-info"></textarea>
             </fieldset>
 
-            <button type="submit">Submit Complaint</button>
+            <button type="submit">Proceed to AI review</button>
         </form>
     </main>
 
     <footer>
         <p>Media Bias Complaint System - © 2025</p>
     </footer>
+
+    <script src="script.js"></script>
+    
 </body>
 </html>
