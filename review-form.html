@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Your Complaint</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Review and Submit Your Complaint</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="complaint-form.html">Back to Form</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="review">
+            <h2>Complaint Review</h2>
+
+            <p><strong>Your Original Complaint:</strong></p>
+            <textarea id="user-complaint" readonly>{{ user_complaint }}</textarea>
+
+            <p><strong>AI Suggested Alternative:</strong></p>
+            <textarea id="ai-complaint" readonly>{{ ai_complaint }}</textarea>
+
+            <label for="modify-complaint">Modify Your Complaint:</label>
+            <textarea id="modify-complaint" name="modify-complaint">{{ user_complaint }}</textarea>
+
+            <h3>Select Organizations</h3>
+            <p>Based on your selected categories, here are some organizations you can submit your complaint to:</p>
+            
+            <div class="organizations">
+                <!-- These checkboxes will be populated dynamically based on categories selected -->
+                <label><input type="checkbox" name="organizations[]" value="human-rights-commission"> Human Rights Commission</label><br>
+                <label><input type="checkbox" name="organizations[]" value="media-watchdog"> Media Watchdog</label><br>
+                <label><input type="checkbox" name="organizations[]" value="gender-equality"> Gender Equality Organization</label><br>
+                <label><input type="checkbox" name="organizations[]" value="hate-speech-agency"> Hate Speech Agency</label><br>
+                <!-- Add other relevant organizations here -->
+            </div>
+
+            <button type="submit">Submit Complaint</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>Media Bias Complaint System - © 2025</p>
+    </footer>
+</body>
+</html>
