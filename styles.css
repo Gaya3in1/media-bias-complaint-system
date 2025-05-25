@@ -1,4 +1,4 @@
-/* Basic main style */
+/* Basic style */
 * {
     margin: 0;
     padding: 0;
@@ -23,21 +23,6 @@ header h1 {
     margin-bottom: 10px;
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
 main {
     padding: 20px;
     max-width: 1200px;
@@ -59,6 +44,21 @@ section {
     text-align: center;
 }
 
+ul {
+    list-style-type: none;
+    padding: 10px;
+}
+
+ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+ul li a {
+    color: white;
+    text-decoration: none;
+}
+
 button {
     padding: 10px 20px;
     background-color: #0044cc;
@@ -72,7 +72,6 @@ button:hover {
     background-color: #0033a1;
 }
 
-/* Footer */
 footer {
     text-align: center;
     margin-top: 40px;
@@ -80,53 +79,3 @@ footer {
     background-color: #0044cc;
     color: white;
 }
-
-/* New section styles for .info and .agencies */
-.info, .agencies {
-    margin-top: 20px;
-}
-
-.info h2, .agencies h2 {
-    font-size: 1.5rem;
-    color: #0044cc;
-    margin-bottom: 15px;
-}
-
-.info ul, .agencies ul {
-    list-style-type: none;
-    padding-left: 20px; /* Indent the list items */
-}
-
-.info ul li, .agencies ul li {
-    margin-bottom: 10px;
-}
-
-.info ul li strong, .agencies ul li strong {
-    color: #0044cc;
-    font-weight: bold;
-}
-
-/* Nested lists within .info and .agencies */
-.info ul li ul, .agencies ul li ul {
-    margin-left: 20px; /* Indent the nested list items by one level */
-    list-style-type: circle;
-}
-
-.info ul li ul li, .agencies ul li ul li {
-    font-size: 0.9rem;
-    margin-bottom: 5px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    main {
-        padding: 15px;
-    }
-
-    .cta button {
-        width: 100%;
-        padding: 12px;
-    }
-
-    section h2, section h3 {
-        font-siz
