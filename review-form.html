@@ -1,4 +1,4 @@
-<!-- Provides the user with AI-refinements and organisations to choose and submit the complaint. -->
+<!-- Provides the user with AI refinements and organizations to choose and submit the complaint -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,31 +23,49 @@
         <section id="review">
             <h2>Complaint Review</h2>
 
-            <!-- Original complaint (readonly) -->
-            <p><strong>Your Original Complaint:</strong></p>
-            <textarea id="user-complaint" readonly>{{ user_complaint }}</textarea>
+            <form action="submit-to-google-sheets.php" method="POST">
+                <!-- Hidden fields for all user data -->
+                <input type="hidden" name="full-name" value="{{ full_name }}">
+                <input type="hidden" name="email" value="{{ email }}">
+                <input type="hidden" name="article-url" value="{{ article_url }}">
+                <input type="hidden" name="additional-info" value="{{ additional_info }}">
 
-            <!-- AI suggested refinement (readonly) -->
-            <p><strong>AI Suggested Alternative:</strong></p>
-            <textarea id="ai-complaint" readonly>{{ ai_complaint }}</textarea>
+                <!-- Include all selected bias categories -->
+                {% for category in bias_categories %}
+                    <input type="hidden" name="bias[]" value="{{ category }}">
+                {% endfor %}
 
-            <!-- Editable complaint text -->
-            <label for="modify-complaint">Modify Your Complaint (if needed):</label>
-            <textarea id="modify-complaint" name="modify-complaint">{{ user_complaint }}</textarea>
+                <!-- Include all selected organizations, will be checkboxes here too -->
+                {% for org in organizations_selected %}
+                    <input type="hidden" name="organizations[]" value="{{ org }}">
+                {% endfor %}
 
-            <h3>Select Organizations</h3>
-            <p>Based on your selected categories, select organizations to submit your complaint to:</p>
+                <!-- Show original complaint (readonly) -->
+                <p><strong>Your Original Complaint:</strong></p>
+                <textarea id="user-complaint" readonly>{{ user_complaint }}</textarea>
 
-            <div class="organizations" id="organization-selection">
-                <label><input type="checkbox" name="organizations[]" value="human-rights-commission" /> Human Rights Commission</label><br />
-                <label><input type="checkbox" name="organizations[]" value="media-watchdog" /> Media Watchdog</label><br />
-                <label><input type="checkbox" name="organizations[]" value="gender-equality" /> Gender Equality Organization</label><br />
-                <label><input type="checkbox" name="organizations[]" value="hate-speech-agency" /> Hate Speech Agency</label><br />
-                <!-- Add other relevant organizations as needed -->
-            </div>
+                <!-- Show AI suggested refinement (readonly) -->
+                <p><strong>AI Suggested Alternative:</strong></p>
+                <textarea id="ai-complaint" readonly>{{ ai_complaint }}</textarea>
 
-            <!-- Final submit button -->
-            <button type="submit" id="final-submit">Submit Complaint</button>
+                <!-- Editable complaint text for final submission -->
+                <label for="modify-complaint">Modify Your Complaint (if needed):</label>
+                <textarea id="modify-complaint" name="modify-complaint">{{ user_complaint }}</textarea>
+
+                <h3>Select Organizations</h3>
+                <p>Based on your selected categories, select organizations to submit your complaint to:</p>
+
+                <div class="organizations" id="organization-selection">
+                    <label><input type="checkbox" name="organizations[]" value="human-rights-commission" {% if 'human-rights-commission' in organizations_selected %}checked{% endif %}/> Human Rights Commission</label><br />
+                    <label><input type="checkbox" name="organizations[]" value="media-watchdog" {% if 'media-watchdog' in organizations_selected %}checked{% endif %}/> Media Watchdog</label><br />
+                    <label><input type="checkbox" name="organizations[]" value="gender-equality" {% if 'gender-equality' in organizations_selected %}checked{% endif %}/> Gender Equality Organization</label><br />
+                    <label><input type="checkbox" name="organizations[]" value="hate-speech-agency" {% if 'hate-speech-agency' in organizations_selected %}checked{% endif %}/> Hate Speech Agency</label><br />
+                    <!-- Add other relevant organizations as needed -->
+                </div>
+
+                <!-- Final submit button -->
+                <button type="submit" id="final-submit">Submit Complaint</button>
+            </form>
         </section>
     </main>
 
