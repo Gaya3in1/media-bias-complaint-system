@@ -1,46 +1,73 @@
 <?php
-// process-complaint.php 
+// process-complaint.php
 //This file will handle the backend logic for processing the complaint text, 
-//likely involving AI refinement (via API) and possibly further handling.
+//uses open AI, selects model, handles errors and hides API key security.
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Collect the complaint text from the form submission
-    $complaintText = $_POST['complaint-description'];
-    
-    // OpenAI API key (securely store this)
-    $openaiApiKey = 'your-openai-api-key'; // NEVER expose this key in front-end JS
-    
-    // OpenAI API endpoint
-    $url = 'https://api.openai.com/v1/completions';
-    
-    // Prepare OpenAI API request payload
+    // Get the complaint description from the POST request
+    $complaintText = $_POST['complaint-description'] ?? '';
+
+    if (empty($complaintText)) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Complaint text is missing.']);
+        exit;
+    }
+
+    // OpenAI API key (store this securely in environment variables in production)
+    $apiKey = 'YOUR_OPENAI_API_KEY'; // <- Replace with your actual key
+
+    // Choose model (adjust if needed)
+    $model = 'gpt-4'; // or 'text-davinci-003'
+
+    // Build the prompt
+    $prompt = "Refine the following complaint about media bias. Be clear, concise, and maintain a respectful tone:\n\n" . $complaintText;
+
+    // Prepare the payload
     $data = [
-        'model' => 'text-davinci-003',  // You can use GPT-4 or any suitable model
-        'prompt' => "Refine this complaint text:\n$complaintText",
+        'model' => $model,
+        'prompt' => $prompt,
         'max_tokens' => 500,
         'temperature' => 0.7
     ];
-    
-    $options = [
-        'http' => [
-            'header'  => "Content-Type: application/json\r\n" .
-                         "Authorization: Bearer $openaiApiKey\r\n",
-            'method'  => 'POST',
-            'content' => json_encode($data)
-        ]
+
+    // Set headers
+    $headers = [
+        'Content-Type: application/json',
+        'Authorization: Bearer ' . $apiKey
     ];
-    
-    $context  = stream_context_create($options);
-    $response = file_get_contents($url, false, $context);
-    if ($response === FALSE) {
-        die('Error occurred while fetching AI response');
+
+    // Send request to OpenAI
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, 'https://api.openai.com/v1/completions');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $curlError = curl_error($ch);
+    curl_close($ch);
+
+    // Handle potential errors
+    if ($response === false || $httpCode >= 400) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Failed to connect to OpenAI: ' . $curlError]);
+        exit;
     }
 
-    // Parse AI response
+    // Decode response
     $responseData = json_decode($response, true);
-    $aiSuggestedText = $responseData['choices'][0]['text'];
-    
-    // Send the AI-suggested text back to the front-end
-    echo json_encode(['ai_complaint' => $aiSuggestedText]);
+    if (!isset($responseData['choices'][0]['text'])) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Unexpected response from OpenAI.']);
+        exit;
+    }
+
+    // Extract AI-refined complaint
+    $aiComplaint = trim($responseData['choices'][0]['text']);
+
+    // Send AI response to frontend
+    header('Content-Type: application/json');
+    echo json_encode(['ai_complaint' => $aiComplaint]);
 }
-?>
